@@ -1,13 +1,17 @@
 const path = require('path'),
       express = require('express'),
       zipdb = require ('zippity-do-dah'),
-      ForecastIo = require('forecastio');
+      ForecastIo = require('forecastio'),
+      logger = require('morgan');
 
 const app = express();
 const weather = new ForecastIo('ed51156c2f19383821fa3638d9c536d7');
 
 // Static files
 app.use(express.static(path.resolve(__dirname, "public")));
+
+//Middlewares
+app.use(logger('short'));
 
 // Views
 app.set("views", path.resolve(__dirname, "views"));
