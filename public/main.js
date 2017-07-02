@@ -1,13 +1,13 @@
 window.onload = () => {
-    const $h1 = document.querySelector("h1"),
-          $zip = document.getElementById("zipcode");
+    const $h1 = document.querySelector("h1")
     
     document.querySelector(".pure-form").addEventListener("submit", e => {
         e.preventDefault();
-        const zipCode = $zip.value;
         $h1.innerText = "Loading...";
-        fetch(`/${zipCode}`)
+        fetch('/getStats')
             .then(data => data.json())
-            .then(json => $h1.textContent = `The temperature is ${json.temperature} in ${json.city}.`); 
+            .then(json => $h1.textContent = `
+            The temperature is ${json.temperature}c.
+            The humidity is ${json.humidity}%.`); 
     });
 };
