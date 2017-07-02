@@ -8,10 +8,6 @@ window.onload = () => {
         $h1.innerText = "Loading...";
         fetch(`/${zipCode}`)
             .then(data => data.json())
-            .then(data => {
-                console.log(data)
-                return data
-            })
             .then(json => $h1.textContent = `The temperature is ${json.temperature} in ${json.city}.`); 
     });
 };
