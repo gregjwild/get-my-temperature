@@ -1,18 +1,17 @@
-$(() => {
-    const $h1 = $("h1"),
-          $zip = $('input[name="zip"]');
+window.onload = () => {
+    const $h1 = document.querySelector("h1"),
+          $zip = document.getElementById("zipcode");
     
-    $("form").on("submit", e => {
+    document.querySelector(".pure-form").addEventListener("submit", e => {
         e.preventDefault();
-        const zipCode = $.trim($zip.val());
-        $h1.text("Loading...");
-
-        const request = $.ajax({
-            url: `/${zipCode}`,
-            dataType: "json"
-        });
-
-        request.done(data => $h1.html(`It is ${data.temperature} &#176; in zipCode.`));
-        request.fail(() => $h1.text("Error"));
+        const zipCode = $zip.value;
+        $h1.innerText = "Loading...";
+        fetch(`/${zipCode}`)
+            .then(data => data.json())
+            .then(data => {
+                console.log(data)
+                return data
+            })
+            .then(json => $h1.textContent = `The temperature is ${json.temperature} in ${json.city}.`); 
     });
-});
+};

@@ -32,6 +32,7 @@ app.get(/^\/(\d{5})$/, (req, res, next) => {
 
     const latitude = location.latitude;
     const longitude = location.longitude;
+    const city = location.city;
 
     weather.forecast(latitude, longitude, (err, data) => {
         if (err) {
@@ -40,8 +41,9 @@ app.get(/^\/(\d{5})$/, (req, res, next) => {
         }
 
         res.json({
-            zipcode: zipcode,
-            temperature: data.currently.temperature
+            zipcode,
+            city,
+            temperature: data.currently.temperature,
         });
     });
 });
