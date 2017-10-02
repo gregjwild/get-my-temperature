@@ -16,3 +16,8 @@ If you don't know JavaScript or HTML, check out codecademy.com from quick, easy 
 - Node: This is the JavaScript engine that lets you use JavaScript almost anywhere.
 - Express: Building your own web server in Node isn't hard, but it is a little tedious. Express will make it quick and easy. It's similar to Flask, with Python.
 
+## Other stuff
+This project is actually originally adapted from a basic app built in the book
+"Express in Action" by Evan Hahn, and published by Manning Publications in 2016.
+
+If you're interested in learning more about Express, the book is available here at https://www.manning.com/books/express-in-action
