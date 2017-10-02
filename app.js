@@ -1,15 +1,11 @@
 const path = require('path'),
       express = require('express'),
-      zipdb = require ('zippity-do-dah'),
-      ForecastIo = require('forecastio'),
-      logger = require('morgan');
-      
+      logger = require('morgan')
+      sensor = require('node-dht-sensor');
 
-let sensor = require('node-dht-sensor');
 sensor.initialize(22, 12);
 
 const app = express();
-const weather = new ForecastIo('ed51156c2f19383821fa3638d9c536d7');
 
 // Static files
 app.use(express.static(path.resolve(__dirname, "public")));
