@@ -320,3 +320,4 @@ The point of this project has been to give you a start in knowing how to serve u
 - Add alternative sensors, such as rain sensors.
 - Explore HTTP POST requests, to send information from the client page to your PI - such as turning an LED on and off.
 - Explore middleware more, to build more complex servers. To start with, try adding the `morgan` logging library, to learn more about HTTP through seeing requests come in on the server.
+- Learn to use templating in Express using Pug or EJS so you can create generated HTML pages, letting you build new pages out of templates and injecting new data instead of hand crafting each page.
