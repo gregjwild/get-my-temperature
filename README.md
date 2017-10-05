@@ -148,8 +148,12 @@ Your server then decides how to respond. It sends a *response*, also containing 
 
 Here's a high level blueprint for each of these cycles for each of our request routes.
 
+Index
 ![/](https://i.imgur.com/Vgtz77y.png)
+/getStats
+Instead of HTML, this will send the client *JSON*, allowing the page to update the information on the page.
 ![/getStats](https://i.imgur.com/ZW1GwG5.png)
+/getCats
 ![/getCats](https://i.imgur.com/ycLtVnH.png)
 
 > HTTP is a super important topic if you want to build lots of apps for the web. As ever, the Mozilla Developer Network has loads of great info: https://developer.mozilla.org/en-US/docs/Web/HTTP
