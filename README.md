@@ -1,7 +1,5 @@
 # get-my-temperature
-Hey there! This is a really simple project to demonstrate how easily a
-Raspberry Pi can be used to serve up IoT style data from sensors, using
-a basic Express based HTTP server.
+Hey there! This is a really simple project to demonstrate how easily a Raspberry Pi can be used to serve up IoT style data from sensors, using a basic Express based HTTP server.
 
 ## What do you need to know first?
 - JavaScript: All the code is written in JavaScript, mostly using ES2015 syntax.
