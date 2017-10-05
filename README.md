@@ -162,17 +162,86 @@ Phew! That's enough HTTP theory. Let's actually do something with it. Remember I
 
 Express makes this all quite quick. We can actually send temperature data to our browser in just two lines of JavaScript on top of what we've already done.
 
-    `app.get('/', (request, response) => response.send(`Hello! The temperature is ${temperature}c!`));`
+    app.get('/', (request, response) => response.send(`Hello! The temperature is ${temperature}c!`));
 
 Let's break this down. 
 
 First, we tell our Express app that we want to give instructions for a `GET` request. We pass two arguments. First, `'/'` -- our index, as a string. Second, we pass a *callback function*. This is telling Express what do to when that request comes in. In this case, it's super simple. We just want our response to be a single string, with the temperature of our sensor. 
 
-We need just one more line before we can serve up the data now. `app.listen(3000);` This tells Express we want specifically to open up port 3000. We're good to go. Open up your terminal and type `node app.js`. 
+We need just one more line before we can serve up the data now. `app.listen(3000, console.log("App running on port 3000!");` This tells Express we want specifically to open up port 3000. We're good to go. Open up your terminal and type `node app.js`. 
 
-If everything is working, you shouldn't see an error message appear, and by going to `localhost:3000`, you should hopefully see "Hello! The temperature is *some value here*c!"
+If everything is working, you should see "App running on port 3000!", and by going to `localhost:3000` in your browser, you should hopefully see "Hello! The temperature is *##.#*c!"
 
-Nice. Kind of boring though isn't it? Let's make a web page for it. 
+Nice. Kind of boring though isn't it? Let's serve up a website instead. Our site is going to be fairly simple: You land on the site, where you have a button you can press to get up-to-date sensor data. If you go to the wrong site, you get a 404, not found page. In the project files, you will see a folder called '/public' - make sure that is in your main project folder. I'm not going to explain the HTML & CSS in this tutorial, but if you've done any HTML & CSS before it should be fairly easy to read.
+
+One of the nice things about Express is that it makes it very easy to set up a server that can handle multiple requests by the browser. When you get to a page, you want your browser to be able to download the CSS files and images that a HTML document links to. This means we want to use one of Express' built in functions, called `static`. 
+
+We do this by telling Express to use `static`, and which folder it should look for. Add this line just below your sensor initialization. First, we need to use one of Node's built in modules, `path`. Require that into a variable called `path` at the top of your `app.js` file. We've made a lot of changes so far, so I'm going to show you the current state of your `app.js` file.
+
+    const path = require('path'),
+          express = require('express'),
+          sensor = require('node-dht-sensor');
+
+    sensor.initialize(22, 12);
+
+    const app = express();
+
+    app.use(express.static(path.resolve(__dirname, "public")));
+
+    app.get('/', (request, response) => response.send(`Hello! The temperature is ${temperature}c!`));
+    
+    app.listen(3000);
+
+We want our request to the `index` page to send out web page instead. Change `response.send(`Hello! The temperature is ${temperature}c!`)` to `response.sendFile('index')`. Now, if everything is correct, when you start up your server again, when you go to index you should see our web page. Good job!
+
+# Sending temperature data as JSON
+
+
+## The front-end JavaScript
+You'll probably notice that clicking on the button doesn't actually do anything get. That's because we've only created our backend API. Now we need to write a small front-end script.
+
+## Making a promise you'll handle something!
+Start by creating a new file called `main.js` in your `public` folder. 
+
+The first thing you want to do is to make sure that the script doesn't execute until the page has fully loaded. Add these lines:    
+
+    window.onload = () => {
+    
+    };
+    
+Everything you write now should come between those curly braces.
+
+What do we want to do? Well, when someone presses the button, the `<h1>` element should tell us the new temperature & humidity information. Let's make a reference to the `<h1>` element so we can quickly access it in future.
+
+    const $h1 = document.querySelector("h1");
+
+JavaScript on the front end is all about *event handling*. The user does *something*, which triggers an event, which is controlled by a callback function. In this case, our event is the user pressing the button that reads "Get Stats!". So, let's add an event listener to it.
+
+     document.querySelector(".pure-form").addEventListener("submit", e => {
+
+     });
+
+We're selecting our `.pure-form` HTML element, and adding an event (`e`) when someone submits the form. Everything between these next curly braces is our event handler function. 
+
+The first thing we want to do is prevent the default event when the event triggers: this is to submit the form to the server. This isn't quite what we want. So, we call `preventDefault()` on `e`. 
+
+Next, with web apps, you always want to give the user some kind of feedback that you've at least triggered what they wanted. In this case, I'm just going to select our `<h1>` element, and set its text to "Loading...";
+
+Now, here comes the fun bit. We're going to use a *promise*. A promise is basically a sequence of actions we want the script to take once certain conditions are met. They come in various forms, and in this case we're using the built in browser promise called `fetch()`.
+
+> Read more about it on MDN here: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+
+We want to tell it to fetch data from '/getStats', which if you remember from our diagram earlier is going to send JSON, not a web page. When we get the data back from our server, it gets returned to the promise, where you `then` do something with it. Yup! You chain `.then()` onto the end of your `fetch('/getStats')` function. After that, the `then()` function actually returns *another* promise, where you `then()` do something else. 
+
+Something like this:
+![A promise chain](https://i.imgur.com/SsS7tKu.png)
+
+Or:
+
+Fetch Data > Convert Data to JSON > Change Element based on JSON. You'll do a lot of this in front-end JavaScript!
+
+
+
 
 
 
