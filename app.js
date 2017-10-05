@@ -14,7 +14,7 @@ app.use(express.static(path.resolve(__dirname, "public")));
 app.get('/', (req, res) => res.sendFile('index'));
 
 // Route: getStats
-app.get('/getStats', (req, res) => {
+app.get('/getStats', (req, res, next) => {
 	
 	let temperature = sensor.read().temperature.toFixed(2);
 	let humidity = sensor.read().humidity.toFixed(2);
