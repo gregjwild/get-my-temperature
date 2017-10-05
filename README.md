@@ -37,7 +37,7 @@ Join your DHT22 to the following GPIO pins:
 
 Here's a quick diagram made in Fritzing(http://fritzing.org/home/):
 
-!(https://i.imgur.com/TQdW54F.png)
+![](https://i.imgur.com/TQdW54F.png)
 
 # What is Node?
 Node basically allows you to run JavaScript code that interfaces with your Pi. You can create anything from handy command line tools, to massive web applications with millions of users. Yes, even robots. It's one of the fastest growing technologies in the world. 
