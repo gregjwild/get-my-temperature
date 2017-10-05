@@ -1,6 +1,5 @@
 const path = require('path'),
       express = require('express'),
-      logger = require('morgan')
       sensor = require('node-dht-sensor');
 
 sensor.initialize(22, 12);
@@ -10,16 +9,10 @@ const app = express();
 // Static files
 app.use(express.static(path.resolve(__dirname, "public")));
 
-//Middlewares
-app.use(logger('short'));
-
-// Views
-app.set("views", path.resolve(__dirname, "views"));
-app.set("view engine", "ejs");
-
 // Routes
 // Route: Index
-app.get('/', (req, res) => res.render('index'));
+app.get('/', (req, res) => res.sendFile('index'));
+
 // Route: getStats
 app.get('/getStats', (req, res, next) => {
 	
@@ -32,7 +25,8 @@ app.get('/getStats', (req, res, next) => {
 	});
 
 });
+
 // Route: Not Found
-app.use((req, res) => res.status(404).render("404"));
+app.use((req, res) => res.status(404).sendFile(`${__dirname}/public/404.html`));
 
 app.listen(3000);
