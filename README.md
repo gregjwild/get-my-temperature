@@ -130,20 +130,27 @@ as a dependency to your `app.js` file, and initialise your Express server.
 
 First, `require()` express to a variable called `express`. Now, you need to initialise express, which you do by calling `express()` and assigning it to a variable.
 
-It's time to serve up your first web based document. For that, we need to take a very quick look at *HTTP*.
+It's time to serve up your first web page! For that, we need to take a very quick look at *HTTP*.
 
 ## HTTP - The workhorse of the web.
 
-You probably use HTTP hundreds, if not thousands of time every day. Every time you type a website in your browser to ask for a web page, you're using HTTP.
+You probably use HTTP hundreds, if not thousands of time every day. Every time you type a website in your browser to ask for a web page, you're using HTTP. But what is it?
 
-It's also used to send and receive data from Facebook every time you post a status, or someone else does. But what is it?
+HTTP, or *Hyper Text Transfer Protocol* is a set of rules for sending documents over the internet. Your browser starts this with a *request*, asking the server for a *resource* in a certain folder, which we call a *route*. That resource could be a file, an image, a webpage or more. On our site, we're going to make three requests:
 
-HTTP, or *Hyper Text Transfer Protocol* is a set of rules for sending documents over the internet. It's based on another protocol called TCP/IP, which we're not going to dig into, but it's worth noting that the "IP" bit refers to the way your browser knows to ask a *domain provider* for the *IP address* of the site you've asked for. It's just a 8-12 digit number, separated by 2 periods. You might have seen 192.168.0.1. That's usually an address on your local network in your house. Your browser accesses it does this with *request*, asking the server for a *resource* in a certain folder. That resource could be a file, an image, a webpage or more.
+- '/' - the index of our page.
+- '/getStats' - to request temperature & humidity data.
+- '/getCats' - or rather, any other page. This doesn't exist! We need to handle that.
 
-A request has two parts, a header, and a body. The header is a whole bunch of information about the resource you want to access, and you want to access it. Particularly importantly, you need tell the server what you want to do. For this tutorial, we just want to `GET` information from the server. The body is any information you want to send to the server to help it fulfil that request. Think about Facebook. When you make a comment, the header would tell Facebook where to send the information, while the body would contain the string of the post. 
+A request has two parts, a header, and a body. The header is a whole bunch of information about the resource you want to access, and you want to access it. Particularly importantly, you need tell the server what you want to do. For this tutorial, we just want to `GET` information from the server. 
 
-Your server then decides how to respond. It sends a *response*, also containing a header and a body. Particularly importantly, the header will indicate whether or not the request can be fulfilled. There's a series of numbers that tell your browser whether it was a success. For now, remember that 200 means "OK", and the famous "404" means that you requested a page or resource that is not available. The body could be the file that was requested, the web page, or even information generated on the server. When you post to Facebook, 
-Facebook will send your browser a response that indicates the message has been sent, and usually you get feedback telling you it's worked.
+Your server then decides how to respond. It sends a *response*, also containing a header and a body. Particularly importantly, the header will indicate whether or not the request can be fulfilled. There's a series of numbers that tell your browser whether it was a success. For now, remember that 200 means "OK", and the famous "404" means that you requested a page or resource that is not available. The body could be the file that was requested, the web page, or even information generated on the server.
+
+Here's a high level blueprint for each of these cycles for each of our request routes.
+
+![/](https://i.imgur.com/Vgtz77y.png)
+![/getStats](https://i.imgur.com/ZW1GwG5.png)
+![/getCats](https://i.imgur.com/ycLtVnH.png)
 
 > HTTP is a super important topic if you want to build lots of apps for the web. As ever, the Mozilla Developer Network has loads of great info: https://developer.mozilla.org/en-US/docs/Web/HTTP
 
