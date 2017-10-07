@@ -194,7 +194,7 @@ We do this by telling Express to use `static`, and which folder it should look f
 
     app.use(express.static(path.resolve(__dirname, "public")));
 
-    app.get('/', (request, response) => response.send(`Hello! The temperature is ${temperature}c!`));
+    app.get('/', (request, response) => response.send(`index`));
     
     app.listen(3000);
 
