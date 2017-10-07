@@ -55,8 +55,7 @@ On line one, just add `console.log("Hello, Pi!");`
 Go to your terminal while in the project folder, and write `node app.js`. Let's make this more interesting, and start interacting with your Pi.
 
 ## Accessing your DHT22 in Node
-Sensors come in all kinds of types. Some might require a little research before you can write code that can access them. When you get a new 
-sensor, you should...
+Sensors come in all kinds of types. Some might require a little research before you can write code that can access them. When you get a new sensor, you should...
 
 - Check for any device drivers needed by your Pi to access a sensor.
 - Find and install any libraries that allow Node to talk with the sensor.
@@ -88,7 +87,7 @@ Hit enter to skip the questions. Next, install node-dht-sensor.
 
     > npm install node-dht-sensor --save
     
-Create a new file, app.jsNow we add the DHT22 as a dependency in your app.js file. Open up app.js. Add this to line 1 `const sensor = require('node-dht-sensor');` I
+sNow we add the DHT22 as a dependency in your app.js file. Add this to line 1 `const sensor = require('node-dht-sensor');`
 
 This tells Node that this script depends on `node-dht-sensor`, which is stored in a folder called `/node_modules`. After that, you can create a quick shortcut to `node-dht-sensor`, which we're calling `sensor`. 
 
@@ -103,7 +102,7 @@ We're now ready to access data from the sensor. Store the current temperature in
 
 Now, we can tell Node to log a string to the console that tells us the temperature in celcius.
 
-- Add a second console.log. `console.log(`The temperature is ${temperature} celcius`);`;
+- Add a second console.log. `console.log(\`The temperature is ${temperature} celcius.\`);`;
 - Save, and run it again.
 
 > Exercise: try taking this code, and reading the humidity from the sensor. Check the documentation for node-dht-sensor if you get stuck.
