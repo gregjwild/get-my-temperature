@@ -102,7 +102,10 @@ We're now ready to access data from the sensor. Store the current temperature in
 
 Now, we can tell Node to log a string to the console that tells us the temperature in celcius.
 
-- Add a second console.log. `console.log(\`The temperature is ${temperature} celcius.\`);`;
+- Add a second console.log. 
+
+    `console.log(`The temperature is ${temperature} celcius.`);`;
+
 - Save, and run it again.
 
 > Exercise: try taking this code, and reading the humidity from the sensor. Check the documentation for node-dht-sensor if you get stuck.
