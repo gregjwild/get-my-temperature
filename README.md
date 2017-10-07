@@ -112,6 +112,14 @@ Now, we can tell Node to log a string to the console that tells us the temperatu
 > Exercise: Maybe you're an American, and celcius doesn't mean much to you? Try converting celcius to farenheit.
 > Exercise for fun and profit: open up a new project, initalise it and try out another popular NPM library called figlet (https://www.npmjs.com/package/figlet)
 
+Your complete code so far:
+
+    const sensor = require('node-dht-sensor');
+
+    let temperature = sensor.read().temperature.toFixed(2);
+
+    console.log(`The temperature is ${temperature} celcius.`);
+
 Awesome! Now we can interact with sensors on the Pi. 
 
 # Your first Express based web server, by express. 
