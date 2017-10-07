@@ -48,13 +48,11 @@ Run:
     curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
     sudo apt-get install -y nodejs
 
-Time for your first Node.js app. Okay, now create a file called app.js in your project folder. 
+Time for your first Node.js app. Create a file called app.js in your project folder. 
 
 On line one, just add `console.log("Hello, Pi!");`
 
 Go to your terminal while in the project folder, and write `node app.js`. Let's make this more interesting, and start interacting with your Pi.
-
-> Exercise: try creating a variable "temperature", and guess what temperature it is. Add a new console.log that logs this to the console.
 
 ## Accessing your DHT22 in Node
 Sensors come in all kinds of types. Some might require a little research before you can write code that can access them. When you get a new 
