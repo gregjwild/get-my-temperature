@@ -115,6 +115,8 @@ Now, we can tell Node to log a string to the console that tells us the temperatu
 Your complete code so far:
 
     const sensor = require('node-dht-sensor');
+    
+    sensor.initialize(22, 12);
 
     let temperature = sensor.read().temperature.toFixed(2);
 
