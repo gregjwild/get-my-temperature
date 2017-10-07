@@ -104,13 +104,13 @@ Now, we can tell Node to log a string to the console that tells us the temperatu
 
 - Add a second console.log. 
 
-    `console.log(`The temperature is ${temperature} celcius.`);`;
+        `console.log(`The temperature is ${temperature} celcius.`);`;
 
 - Save, and run it again.
 
-> Exercise: try taking this code, and reading the humidity from the sensor. Check the documentation for node-dht-sensor if you get stuck.
-> Exercise: Maybe you're an American, and celcius doesn't mean much to you? Try converting celcius to farenheit.
-> Exercise for fun and profit: open up a new project, initalise it and try out another popular NPM library called figlet (https://www.npmjs.com/package/figlet)
+> - Exercise: try taking this code, and reading the humidity from the sensor. Check the documentation for node-dht-sensor if you get stuck.
+> - Exercise: Maybe you're an American, and celcius doesn't mean much to you? Try converting celcius to farenheit.
+> - Exercise for fun and profit: open up a new project, initalise it and try out another popular NPM library called figlet (https://www.npmjs.com/package/figlet)
 
 Your complete code so far:
 
