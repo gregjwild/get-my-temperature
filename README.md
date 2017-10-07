@@ -90,7 +90,7 @@ Hit enter to skip the questions. Next, install node-dht-sensor.
 
     > npm install node-dht-sensor --save
     
-Now we add it as a dependency in your app file. Open up app.js. Add this to line 1 `const sensor = require('node-dht-sensor');` I
+Create a new file, app.jsNow we add the DHT22 as a dependency in your app.js file. Open up app.js. Add this to line 1 `const sensor = require('node-dht-sensor');` I
 
 This tells Node that this script depends on `node-dht-sensor`, which is stored in a folder called `/node_modules`. After that, you can create a quick shortcut to `node-dht-sensor`, which we're calling `sensor`. 
 
