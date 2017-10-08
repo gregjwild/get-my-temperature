@@ -21,7 +21,7 @@ If you don't know JavaScript or HTML, check out codecademy.com from quick, easy 
 - Optional: a breadboard.
 - Optional: a breakout board with a ribbon cable to connect to your GPIO.
 
-Depending on which specific DHT-22 you get, you may need a different set of cables & resistors. Some come mounted on a circuit board with resistors. You'll see this one in photos in this article: https://www.amazon.co.uk/HALJIA-Digital-Temperature-Humidity-Raspberry/dp/B01N6PB489/
+Depending on which specific DHT-22 you get, you may need a different set of cables & resistors. Some come mounted on a circuit board with resistors. You'll see this one in photos for sale here: https://www.amazon.co.uk/HALJIA-Digital-Temperature-Humidity-Raspberry/dp/B01N6PB489/
 
 # Setting your Pi
 Let's get your Pi setup first. I'm using a breakout board and breadboard to make it easier to quickly plug in sensors. You can hook all this up with female-to-female connectors, but the breakout board definitely makes things easier in the long run when you want to extend or modify this project for new sensors.
@@ -38,7 +38,7 @@ Here's a quick diagram made in Fritzing(http://fritzing.org/home/):
 ![](https://i.imgur.com/TQdW54F.png)
 
 # What is Node?
-Node basically allows you to run JavaScript code that interfaces with your Pi. You can create anything from handy command line tools, to massive web applications with millions of users. Yes, even robots. It's one of the fastest growing technologies in the world. 
+Node basically allows you to run JavaScript code that interfaces with your Pi. You can create anything from handy command line tools, to massive web applications with millions of users. Its asynchronous, non-blocking I/O makes it great for handling high-traffic network communications (otherwise known as really busy web sites).
 
 We need to start by installing Node.js. Instructions for this are available on the Node website. Go to https://nodejs.org/en/download/package-manager/, and look for
 "Debian and Ubuntu based Linux distributions". 
@@ -52,7 +52,9 @@ Time for your first Node.js app. Create a file called app.js in your project fol
 
 On line one, just add `console.log("Hello, Pi!");`
 
-Go to your terminal while in the project folder, and write `node app.js`. Let's make this more interesting, and start interacting with your Pi.
+Save, and go to your terminal and run `node app.js`.
+
+Assuming that work, let's make this more interesting, and start interacting with your DHT22.
 
 ## Accessing your DHT22 in Node
 Sensors come in all kinds of types. Some might require a little research before you can write code that can access them. When you get a new sensor, you should...
