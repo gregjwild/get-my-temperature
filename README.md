@@ -27,11 +27,11 @@ Depending on which specific DHT-22 you get, you may need a different set of cabl
 Let's get your Pi setup first. I'm using a breakout board and breadboard to make it easier to quickly plug in sensors. You can hook all this up with female-to-female connectors, but the breakout board definitely makes things easier in the long run when you want to extend or modify this project for new sensors.
 
 Join your DHT22 to the following GPIO pins:
-- Positive: 22
+- Positive: 3v3
 - Negative: 12
 - Ground: Ground. 
 
-> Note, if your DHT22 doesn't come mounted onto a circuit board with transistors, you should look at a resistor of 4.7K - 10K Ω
+> Note, if your DHT22 doesn't come mounted onto a circuit board with transistors, you should look at a resistor of 4.7K - 10K Ω between the grounding wire and ground line.
 
 Here's a quick diagram made in Fritzing(http://fritzing.org/home/):
 
@@ -87,11 +87,11 @@ Hit enter to skip the questions. Next, install node-dht-sensor.
 
     > npm install node-dht-sensor --save
     
-sNow we add the DHT22 as a dependency in your app.js file. Add this to line 1 `const sensor = require('node-dht-sensor');`
+Now we add the DHT22 as a dependency in your app.js file. Add this to line 1 `const sensor = require('node-dht-sensor');`
 
 This tells Node that this script depends on `node-dht-sensor`, which is stored in a folder called `/node_modules`. After that, you can create a quick shortcut to `node-dht-sensor`, which we're calling `sensor`. 
 
-We also need to tell node what GPIO pins to access. For that, we can call `sensor.initialize()`, passing in input as our first argument, and the output as our second. Note, the ground pin doesn't actually connect to the GPIO, just to the ground line, and we don't need to tell node this.
+We also need to tell node what GPIO pins to access. For that, we can call `sensor.initialize()`, passing in ("22") as our first argument identifying the type of sensor, and the output pin as our second. Note, the ground pin doesn't actually connect to the GPIO, just to the ground line, and we don't need to tell node this.
 
 We're now ready to access data from the sensor. Store the current temperature in a variable on line 2: `let temperature = sensor.read().temperature.toFixed(2);` 
 
@@ -115,6 +115,8 @@ Now, we can tell Node to log a string to the console that tells us the temperatu
 Your complete code so far:
 
     const sensor = require('node-dht-sensor');
+    
+    sensor.initialize(22, 12);
 
     let temperature = sensor.read().temperature.toFixed(2);
 
@@ -192,7 +194,7 @@ We do this by telling Express to use `static`, and which folder it should look f
 
     app.use(express.static(path.resolve(__dirname, "public")));
 
-    app.get('/', (request, response) => response.send(`Hello! The temperature is ${temperature}c!`));
+    app.get('/', (request, response) => response.send(`index`));
     
     app.listen(3000);
 
