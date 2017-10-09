@@ -238,6 +238,8 @@ You're ready to see if it works. Launch your server as usual, and visit `localho
 
 When you visit your home page. You'll probably notice that clicking on the button doesn't actually do anything yet. That's because we've only created our backend logic. Let's quickly add a route to handle unknown requests, then get back to this.
 
+> Exercise: Maybe you want to send some time information over to your page, to note when the data was gathered? You should look at the Date object documentation to learn more about times in JavaScript: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+
 ## Handling requests to pages that don't exist in your server
 What if someone tries to visit a page that doesn't exist on your server? This is where the famous "404" code comes in. We've already prepared a 404 page in our public folder, but currently Express doesn't know when to send it. We can fix this with just one line of code.
 
@@ -321,6 +323,9 @@ And that's your front-end code! Here's the whole sample again, in case you misse
                 The humidity is ${json.humidity}%.`); 
         });
     };
+
+> Exercise: Try storing the previous temperature you logged in your client side code. When new data is fetched from the server, change the appearance based on whether or not the temperature has increased, decreased, or remained constant.
+> Exercise: If you implemented a time-stamp into your request during the /getStats section, add this into the client-side code. 
 
 # Summary
 So there you have it! We've built a simple web server that serves up both HTML pages and JSON. It pulls data from our Pi's DHT22 temperature and humidity sensor, allowing you to give instant updates to anyone who visits the page.
